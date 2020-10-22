@@ -5,6 +5,7 @@ exports.handler = async (event, context) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
+    secure: false,
     auth: {
         user: 'kory18@ethereal.email',
         pass: 'qjWuKphDgZ1eDrZZbQ'
@@ -30,5 +31,5 @@ transporter.sendMail(message, (err, info) => {
   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 });
   
-  return { statusCode: 200 }
+  return { statusCode: 201 }
 };
