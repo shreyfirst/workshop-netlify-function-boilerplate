@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: '"Shrey Gupta" <shrey@fundsy.io>', // sender address
     to: "s@fundsy.io, shrey@fundsy.io", // list of receivers
     subject: "Hellos", // Subject line
     text: "Hello world?", // plain text body
