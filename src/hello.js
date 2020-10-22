@@ -32,6 +32,6 @@ transporter.sendMail(mailOptions, function(error, info){
 
   return { 
     statusCode: 200,
-    body: final
+    body: "d" + final
   }
 };
