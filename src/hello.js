@@ -2,7 +2,7 @@ import nodemailer from "nodemailer"
 
 exports.handler = async (event, context) => {
 
-  const body = JSON.parse(event.body);
+  const body = event.body;
   const name = body.name;
   const email = body.email;
   const subject = body.subject;
