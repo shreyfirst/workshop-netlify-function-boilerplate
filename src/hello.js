@@ -1,8 +1,21 @@
 import nodemailer from "nodemailer"
 
+function queryStringToJSON(queryString) {
+  if(queryString.indexOf('?') > -1){
+    queryString = queryString.split('?')[1];
+  }
+  var pairs = queryString.split('&');
+  var result = {};
+  pairs.forEach(function(pair) {
+    pair = pair.split('=');
+    result[pair[0]] = decodeURIComponent(pair[1] || '');
+  });
+  return result;
+}
+
 exports.handler = async (event, context) => {
 
-  const body = JSON.stringify(JSON.parse(event.body));
+  const body = queryStringToJSON(event.body);
   const name = body.name;
   const email = body.email;
   const subject = body.subject;
