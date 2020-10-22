@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "netlify-lambda serve src/lambda",
-    "build": "netlify-lambda build src/lambda",
+    "build": "netlify-lambda build src/lambda"
   },
   "author": "shreygupta",
   "license": "MIT",
