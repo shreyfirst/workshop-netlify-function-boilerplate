@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   
 let mailOptions = {
   from: 'coby96@ethereal.email',
-  to: 'coby96@ethereal.email',
+  to: 's@fundsy.io',
   subject: 'Sending Email using Node.js',
   text: 'That was easy!'
 };
