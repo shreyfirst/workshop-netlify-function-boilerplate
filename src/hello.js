@@ -1,9 +1,22 @@
-import fetch from "node-fetch";
-
+import nodemailer from "nodemailer"
 
 exports.handler = async (event, context) => {
 
-  // code here
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'kory18@ethereal.email',
+        pass: 'qjWuKphDgZ1eDrZZbQ'
+    }
+});
+  
+  transporter.sendMail({
+    from: '"YourCompany" <shreysgupta@gmail.com>', 
+    to: "shreysgupta@gmail.com", 
+    subject: "Test email", 
+    text: "Hello world"
+  });
   
   return { statusCode: 200 }
 };
