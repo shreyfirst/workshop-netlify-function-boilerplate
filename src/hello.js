@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   
 let mailOptions = {
   from: 'coby96@ethereal.email',
-  to: 's@fundsy.io',
+  to: 'coby96@ethereal.email',
   subject: 'Sending Email using Node.js',
   text: 'That was easy!'
 };
@@ -23,10 +23,10 @@ let mailOptions = {
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
-    final = error
+    final = "e" + error
   } else {
     console.log('Email sent: ' + info.response);
-    final = info.response
+    final = "i" + info
   }
 });
 
