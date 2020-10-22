@@ -1,44 +1,36 @@
-import sendmail from "sendmail"
+import nodemailer from "nodemailer"
 
 exports.handler = async (event, context) => {
 
   let final = "f";
 
-  sendmail({
-    from: 'test@yourdomain.com',
-    to: 's@fundsy.io',
-    replyTo: 'jason@yourdomain.com',
-    subject: 'MailComposer sendmail',
-    html: 'Mail of test sendmail '
-  }, function (err, reply) {
-    console.log(err)
-  })
+  let testAccount = await nodemailer.createTestAccount();
 
-//   const transporter = nodemailer.createTransport({
-//     host: 'smtp.ethereal.email',
-//     port: 587,
-//     auth: {
-//         user: 'coby96@ethereal.email',
-//         pass: 'wdUJk4WUa7Na8PBb3M'
-//     }
-// });
-  
-// let mailOptions = {
-//   from: 'coby96@ethereal.email',
-//   to: 's@fundsy.io',
-//   subject: 'Sending Email using Node.js',
-//   text: 'That was easy!'
-// };
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+  });
 
-// transporter.sendMail(mailOptions, function(error, info){
-//   if (error) {
-//     console.log(error);
-//     final = "e" + error
-//   } else {
-//     console.log('Email sent: ' + info.response);
-//     final = "i" + info
-//   }
-// });
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    to: "s@fundsy.io, shrey@fundsy.io", // list of receivers
+    subject: "Hellos", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
   return { 
     statusCode: 200,
