@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 });
   
   transporter.sendMail({
-    from: '"YourCompany" <shreysgupta@gmail.com>', 
+    from: 'kory18@ethereal.email', 
     to: "shreysgupta@gmail.com", 
     subject: "Test email", 
     text: "Hello world"
