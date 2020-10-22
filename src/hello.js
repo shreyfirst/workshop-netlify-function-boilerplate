@@ -2,7 +2,7 @@ import nodemailer from "nodemailer"
 
 exports.handler = async (event, context) => {
 
-  function queryStringToJSON(queryString) {
+  function queryStringToJSON(queryString) { 
     if(queryString.indexOf('?') > -1){
       queryString = queryString.split('?')[1];
     }
@@ -45,6 +45,6 @@ exports.handler = async (event, context) => {
 
   return { 
     statusCode: 200,
-    body: body 
+    body: "Thanks for submitting the contact form!" 
   }
 };
